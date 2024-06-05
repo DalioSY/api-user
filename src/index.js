@@ -1,9 +1,10 @@
 import express from "express";
 import { PrismaClient } from "@prisma/client";
 import cors from "cors";
+import { connectToMongo } from "./database/connect";
 
 const prisma = new PrismaClient();
-
+connectToMongo();
 const app = express();
 app.use(express.json());
 app.use(cors());
