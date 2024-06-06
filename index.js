@@ -1,10 +1,10 @@
 import express from "express";
 import { PrismaClient } from "@prisma/client";
 import cors from "cors";
-import { connectToMongo } from "./database/connect";
 
 const prisma = new PrismaClient();
-connectToMongo();
+const port = process.env.PORT || 3333;
+
 const app = express();
 app.use(express.json());
 app.use(cors());
@@ -59,4 +59,4 @@ app.delete("/usuarios/:id", async (req, res) => {
   res.status(200).json({ message: "Usuãrio deletado com Sucesso!" });
 });
 
-app.listen(3333);
+app.listen(port);
